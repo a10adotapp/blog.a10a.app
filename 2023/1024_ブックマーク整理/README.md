@@ -1,0 +1,16 @@
+- https://ui.shadcn.com/
+    - Next.jsのUIライブラリは今後これでいきたい。
+    - コンポーネントが揃っているし大きいプロジェクトでも導入されているっぽい
+    - [Vercelの中の人](https://twitter.com/shadcn)が開発してるっぽい
+- https://v0.dev/
+    - やばい
+    - 自然言語でコンポーネントを作成できる
+        - https://v0.dev/t/bo2N7pU
+        - `a weather app looks like the iOS weather app`
+        - <img width="480" alt="スクリーンショット" src="https://github.com/a10adotapp/blog.a10a.app/assets/131515321/8cf3b9e1-3213-4676-a38b-45cd0a6185de">
+        - `npx v0 add dH3ygwx`で自分のプロジェクトにインストールできる
+    - 今後レゴ組み立ておじさんとして生きていくことになるかもしれない
+- https://huemint.com/brand-intersection/
+    - カラーパレットを作成できる
+- https://oklch.com/
+    - https://qiita.com/soi/items/9439ba59cef99b1a1ea5
