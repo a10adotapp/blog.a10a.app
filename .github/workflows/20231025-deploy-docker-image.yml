@@ -1,0 +1,51 @@
+name: deploy docker image for 2023/1025_redirect
+
+on:
+  workflow_dispatch:
+
+permissions: write-all
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            2023/1025_redirect
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: docker build
+        run: |
+          docker build \
+              --tag ghcr.io/a10adotapp/blog.a10a.app/2023/1025_redirect:${{ github.sha }} \
+              --tag ghcr.io/a10adotapp/blog.a10a.app/2023/1025_redirect:latest \
+              2023/1025_redirect
+
+      - name: docker push
+        run: |
+          docker push ghcr.io/a10adotapp/blog.a10a.app/2023/1025_redirect:${{ github.sha }}
+          docker push ghcr.io/a10adotapp/blog.a10a.app/2023/1025_redirect:latest
+
+      - name: setup ssh
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 700 ~/.ssh/id_ed25519
+
+      - name: ssh deploy
+        run: |
+          ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} '\
+          cd ~/blog.a10a.app \
+          && docker compose pull \
+          && docker compose build \
+          && docker compose up -d
+          '

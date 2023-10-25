@@ -1,0 +1,9 @@
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/go:1-1.21-bullseye
+    container_name: blog-a10a-app
+    command: sleep infinity
+    volumes:
+      - ..:/workspace:cached
+    ports:
+      - 3000:3000

@@ -1,0 +1,16 @@
+{
+  "name": "blog-a10a-app",
+  "dockerComposeFile": "compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go"
+      ],
+      "settings": {
+        "remote.autoForwardPorts": false
+      }
+    }
+  }
+}
