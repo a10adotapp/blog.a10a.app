@@ -20,3 +20,13 @@ PID   USER  PR  NI   VIRT    RES   %CPU   %MEM      TIME+  S  COMMAND
 ```
 
 どうしたものか、、、
+
+-----
+
+> 尚、移行データに画像ファイルが多かったのが原因なのかサムネイルを作るプロセス「ffmpeg-thumb」がCPUリソースを消費しまくり、長時間CPU使用率99%の状況が続きました。1-2日（機種によっては1週間）で収まるという話ですが、画像の管理は見送りました。機会があれば少しづつ追加してみようと考えています。
+> 
+> - https://blog.8wired.jp/gadget/review-synology-diskstation-ds210/
+
+**（機種によっては1週間）**
+
+ええ、、、
