@@ -3,6 +3,7 @@ package router
 import (
 	"fmt"
 	"html/template"
+	"io/fs"
 	"net/http"
 	"time"
 
@@ -11,7 +12,14 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func NewRouter(tmpl *template.Template) *chi.Mux {
+func NewRouter(fsys fs.FS) *chi.Mux {
+	tmpl, err := template.ParseFS(fsys, []string{
+		"static/index.html",
+	}...)
+	if err != nil {
+		panic(err)
+	}
+
 	router := chi.NewRouter()
 
 	router.Use(middleware.Timeout(10 * time.Second))
