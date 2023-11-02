@@ -4,8 +4,7 @@ export async function createCredentials() {
   const credentails = await navigator.credentials.create({
     publicKey: {
       rp: {
-        id: "f87f-2001-f74-3a0-6300-dd86-9cad-ddb3-1048.ngrok-free.app",
-        name: "a10a localhost",
+        name: "a10a server",
       },
       user: {
         id: decodeBase64Url("some-user-id"),
@@ -23,14 +22,6 @@ export async function createCredentials() {
           alg: -257,
         },
       ],
-      authenticatorSelection: {
-        authenticatorAttachment: "platform",
-        residentKey: "required",
-        userVerification: "preferred",
-      },
-      extensions: {
-        credProps: true,
-      },
     },
   });
 
