@@ -1,0 +1,1 @@
+- [go-chiでAPI+Staticサーバーを作成する - zenn.dev](https://zenn.dev/a10a/articles/963e5326523ff8)
