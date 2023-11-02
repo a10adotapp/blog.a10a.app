@@ -12,9 +12,7 @@
 
     <pre></pre>
 
-    <script type="module">
-      import { createCredentials } from "/scripts/auth.js";
-
+    <script>
       window.addEventListener("load", async () => {
         const response = await fetch("/api/");
         const responseData = await response.json();
@@ -24,8 +22,6 @@
           null,
           "  "
         );
-
-        createCredentials();
       });
     </script>
   </body>
