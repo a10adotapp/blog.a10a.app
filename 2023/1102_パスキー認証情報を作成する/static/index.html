@@ -1,0 +1,32 @@
+<html>
+  <body
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    "
+  >
+    <h1>{{ .Message }}</h1>
+
+    <pre></pre>
+
+    <script type="module">
+      import { createCredentials } from "/scripts/auth.js";
+
+      window.addEventListener("load", async () => {
+        const response = await fetch("/api/");
+        const responseData = await response.json();
+
+        document.querySelector("pre").innerHTML = JSON.stringify(
+          responseData,
+          null,
+          "  "
+        );
+
+        createCredentials();
+      });
+    </script>
+  </body>
+</html>
