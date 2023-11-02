@@ -34,6 +34,18 @@ func NewRouter(fsys fs.FS) *chi.Mux {
 	})
 
 	router.Route("/", func(r chi.Router) {
+		r.Get("/scripts/*", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			subFsys, err := fs.Sub(fsys, "static")
+			if err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
+				w.Write([]byte(err.Error()))
+
+				return
+			}
+
+			http.FileServer(http.FS(subFsys)).ServeHTTP(w, r)
+		}))
+
 		r.Get("/*", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			pageData := &struct {
 				Message string
